@@ -4,6 +4,7 @@ import { Router } from 'express';
 import usersRouter from './users.routes';
 import sessionsRouter from './sessions.routes';
 import postsRoutes from './posts.routes';
+import filesRoutes from './files.routes';
 
 const routes = Router();
 
@@ -12,5 +13,6 @@ const routes = Router();
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
 routes.use('/posts', postsRoutes);
+routes.use('/files', filesRoutes);
 
 export default routes;

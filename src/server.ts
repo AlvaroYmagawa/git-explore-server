@@ -5,6 +5,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 
 // CUSTOM IMPORTS
+import cors from 'cors';
 import AppError from './errors/AppError';
 import routes from './routes';
 import './database';
@@ -12,6 +13,7 @@ import uploadConfig from './config/upload';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 // This will serve a path for our tmp folder and then show the requested file
 // in every files route
