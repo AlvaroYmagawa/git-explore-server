@@ -11,6 +11,9 @@ class Users {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column('boolean')
+  admin: boolean;
+
   @Column()
   name: string;
 

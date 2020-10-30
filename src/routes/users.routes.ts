@@ -14,7 +14,7 @@ const usersRoutes = Router();
 const upload = multer(uploadConfig);
 
 usersRoutes.post('/', async (request, response) => {
-  const { name, email, password } = request.body;
+  const { name, email, password, admin } = request.body;
 
   const createUser = new CreateUserService();
 
@@ -22,6 +22,7 @@ usersRoutes.post('/', async (request, response) => {
     name,
     email,
     password,
+    admin,
   });
 
   // Deleting user password to do not show into response

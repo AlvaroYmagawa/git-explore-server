@@ -1,15 +1,25 @@
 import { Router } from 'express';
 import multer from 'multer';
+import { getRepository } from 'typeorm';
 import uploadConfig from '../config/upload';
 
 // CUSTOM IMPORTS
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import Post from '../models/Post';
 import CreatePostService from '../services/posts/CreatePostService';
 
 const postsRoutes = Router();
 const upload = multer(uploadConfig);
 
 postsRoutes.use(ensureAuthenticated);
+
+postsRoutes.get('/', async (request, response) => {
+  const postsRepository = getRepository(Post);
+
+  const posts = await postsRepository.find();
+
+  return response.json(posts);
+});
 
 postsRoutes.post('/', upload.single('photo'), async (request, response) => {
   const { description, link, photo } = request.body;
