@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { request, response, Router } from 'express';
 import multer from 'multer';
 import { getRepository } from 'typeorm';
 import uploadConfig from '../config/upload';

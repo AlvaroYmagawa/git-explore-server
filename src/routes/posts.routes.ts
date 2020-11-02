@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { getRepository } from 'typeorm';
+import { getRepository, Like } from 'typeorm';
 import uploadConfig from '../config/upload';
 
 // CUSTOM IMPORTS
@@ -14,9 +14,19 @@ const upload = multer(uploadConfig);
 postsRoutes.use(ensureAuthenticated);
 
 postsRoutes.get('/', async (request, response) => {
+  const { search } = request.query;
+
   const postsRepository = getRepository(Post);
 
-  const posts = await postsRepository.find();
+  let posts = [];
+
+  if (search) {
+    posts = await postsRepository.find({
+      description: Like(`%${search}%`),
+    });
+  } else {
+    posts = await postsRepository.find();
+  }
 
   return response.json(posts);
 });
