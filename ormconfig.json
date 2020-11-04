@@ -1,10 +1,10 @@
 {
   "type": "postgres",
-  "host": "localhost",
+  "host": "ec2-52-71-153-228.compute-1.amazonaws.com",
   "port": 5432,
-  "username": "postgres",
-  "password": "docker",
-  "database": "git-explore",
+  "username": "dmuuxurzznelty",
+  "password": "b1af0b19dd4c4f6790ec62cffaa53dd79784c2ccdc493093f515b64964a8cf71",
+  "database": "dp95hhsuade9",
   "entities": [
     "./src/models/*.ts"
   ],
